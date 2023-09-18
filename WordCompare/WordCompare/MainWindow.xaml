@@ -1,0 +1,68 @@
+﻿<Window x:Class="WordCompare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WordCompare"
+        mc:Ignorable="d"
+        xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        Title="MainWindow" Height="460" MaxHeight="460" MinHeight="460"  Width="400" MaxWidth="400" MinWidth="400"  ResizeMode="NoResize" StateChanged="Window_StateChanged" Loaded="Window_Loaded">
+    <Window.Background>
+        <ImageBrush ImageSource="./Asset/bg.png" TileMode="None" Stretch="Fill"/>
+    </Window.Background>
+    <StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Visibility="Collapsed" HorizontalAlignment="Right">
+            <StackPanel controls:Growl.Token="SuccessMsg" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button x:Name="btn_Explain"  Width="28" Height="28" Padding="0,0,0,0" Margin="10,0,0,0" Background="{x:Null}"  Click="btn_Explain_Click" BorderBrush="{x:Null}">
+                    <Image Source="./Asset/icon/help32.png"  Width="28" ></Image>
+                </Button>
+                <Button x:Name="btn_Intersect"  Width="32" Height="32" Padding="0,0,0,0" Margin="10,0,10,0" Background="{x:Null}" Click="btn_Intersect_Click" BorderBrush="{x:Null}">
+                    <Image Source="./Asset/icon/start.png"  Width="32" ></Image>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_baseFolderPath" Text="{Binding BaseFolderPath}" Style="{StaticResource TextBoxExtend}" hc:InfoElement.TitlePlacement="Left" hc:InfoElement.Title="对比文件夹" Width="280" />
+                    <Button x:Name="btn_SetPath" Style="{StaticResource ButtonPrimary}" Content="浏览" Click="btn_SetPath_Click" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,12,0,0" >
+                    <TextBlock Text="将空格视为分隔符" VerticalAlignment="Center"/>
+                    <ToggleButton Margin="20,0,0,0" IsChecked="{Binding IsSplitSpace}" Style="{StaticResource ToggleButtonSwitch}" VerticalAlignment="Center"/>
+                    <Button x:Name="btn_Help4SplitSpace"  Width="28" Height="28" Padding="0,0,0,0" Margin="10,0,0,0" Click="btn_Help4SplitSpace_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Image Source="./Asset/icon/help32.png"  Width="28" />
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <Border Grid.Row="2" Background="#FFCECECE" Width="360"/>
+
+            <StackPanel Grid.Row="3" Margin="10,20,10,0">
+                <ListBox x:Name="lb_files" MaxHeight="200">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel  Height="30" Orientation="Horizontal" >
+                                    <TextBlock Text="{Binding Key}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                </StackPanel>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button x:Name="btn_SetAttribute" Style="{StaticResource ButtonPrimary}" HorizontalAlignment="Right" Margin="0,10,0,0" Content="调整属性" Click="btn_SetAttribute_Click"/>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Window>
