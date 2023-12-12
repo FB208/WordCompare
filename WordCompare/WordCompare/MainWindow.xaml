@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        Title="MainWindow" Height="460" MaxHeight="460" MinHeight="460"  Width="400" MaxWidth="400" MinWidth="400"  ResizeMode="NoResize" StateChanged="Window_StateChanged" Loaded="Window_Loaded">
+        Title="WordCompare" Height="460" MaxHeight="460" MinHeight="460"  Width="400" MaxWidth="400" MinWidth="400"  ResizeMode="NoResize" StateChanged="Window_StateChanged" Loaded="Window_Loaded">
     <Window.Background>
         <ImageBrush ImageSource="./Asset/bg.png" TileMode="None" Stretch="Fill"/>
     </Window.Background>
