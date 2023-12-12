@@ -10,6 +10,7 @@ using WordCompare.Common;
 using WordCompare.Controller;
 using HandyControl.Tools.Extension;
 using Aspose.Words.Saving;
+using System.Windows;
 
 namespace WordCompare.ViewModel
 {
@@ -102,14 +103,23 @@ namespace WordCompare.ViewModel
 
         public void LoadAttribute()
         {
-            Document doc = new Document(FilePath);
+            try
+            {
+                Document doc = new Document(FilePath);
 
-            var properties = doc.BuiltInDocumentProperties;
-            Author = properties.Author;
-            LastSavedBy = properties.LastSavedBy;
-            LastPrinted = properties.LastPrinted.AddHours(8);
-            LastSavedTime = properties.LastSavedTime.AddHours(8);
-            CreateTime = properties.CreatedTime.AddHours(8);
+                var properties = doc.BuiltInDocumentProperties;
+                Author = properties.Author;
+                LastSavedBy = properties.LastSavedBy;
+                LastPrinted = properties.LastPrinted.AddHours(8);
+                LastSavedTime = properties.LastSavedTime.AddHours(8);
+                CreateTime = properties.CreatedTime.AddHours(8);
+            }
+            catch
+            {
+                MessageBox.Show("Word版本太新了，当前程序无法解析");
+                
+            }
+            
 
 
             //foreach (DocumentProperty item in doc.BuiltInDocumentProperties)
